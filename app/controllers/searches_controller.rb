@@ -24,12 +24,13 @@ class SearchesController < ApplicationController
   # POST /searches
   # POST /searches.json
   def create
-    @result = Genius.get_annotation(Genius.get_auth_token)
+    # @result = Genius.get_annotation(Genius.get_auth_token)
+    @auth_page = Genius.auth_page
     # @search = Search.new(search_params)
 
     respond_to do |format|
       # if @search.save
-        format.html { redirect_to @result, notice: 'Called Genius annotation' }
+        format.html { redirect_to @auth_page, notice: 'Called Genius annotation' }
         # format.json { render :show, status: :created, location: @search }
       # else
         format.html { render :new }
