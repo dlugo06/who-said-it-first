@@ -61,17 +61,6 @@ class SearchesController < ApplicationController
     end
   end
 
-  # POST /authorize
-  def authorize
-    @auth_page = Genius.auth_page
-    redirect_to @auth_page
-  end
-
-  # GET /authenticate
-  def auth_page
-    @search = Search.new
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_search

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  post '/auth_page', to: 'searches#authorize'
+  root 'genius#auth_page'
   resources :searches
-  root 'searches#auth_page'
-  get '/oauth2/callback', to: 'results#show'
+  post '/', to: 'genius#authorize'
+  get '/oauth2/callback', to: 'genius#show'
 end
