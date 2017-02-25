@@ -12,7 +12,10 @@ class GeniusController < ApplicationController
 
   def show
     @code = params['code']
-    @result = Genius.get_annotation(Genius.get_auth_token(@code))
+    @result = Genius.get_annotation(Genius.get_auth_token(@code)).parsed
+    respond_to do |format|
+      format.json { render :show }
+    end
   end
 
   def new

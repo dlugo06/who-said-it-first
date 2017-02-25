@@ -1,5 +1,5 @@
 class Genius < ApplicationRecord
-  @redirect = 'http://localhost:3000/oauth2/callback'
+  @redirect = 'http://localhost:3000/oauth2/callback.json'
 
   def self.auth_page
     "https://api.genius.com/oauth/authorize?client_id=#{self.client_id}&redirect_uri=#{@redirect}&state=1&response_type=code"
@@ -11,7 +11,7 @@ class Genius < ApplicationRecord
   end
 
   def self.get_annotation(token)
-    token.get('https://api.genius.com/annotations/10225840')
+    token.get('https://api.genius.com/songs/378195')
   end
 
   private
