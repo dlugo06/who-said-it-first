@@ -24,18 +24,16 @@ class SearchesController < ApplicationController
   # POST /searches
   # POST /searches.json
   def create
-    # @result = Genius.get_annotation(Genius.get_auth_token)
-    @auth_page = Genius.auth_page
-    # @search = Search.new(search_params)
+    @search = Search.new(search_params)
 
     respond_to do |format|
-      # if @search.save
-        format.html { redirect_to @auth_page, notice: 'Called Genius annotation' }
-        # format.json { render :show, status: :created, location: @search }
-      # else
+      if @search.save
+        format.html { redirect_to @search, notice: 'New search created' }
+        format.json { render :show, status: :created, location: @search }
+      else
         format.html { render :new }
         format.json { render json: @search.errors, status: :unprocessable_entity }
-      # end
+      end
     end
   end
 
@@ -61,6 +59,17 @@ class SearchesController < ApplicationController
       format.html { redirect_to searches_url, notice: 'Search was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  # POST /authorize
+  def authorize
+    @auth_page = Genius.auth_page
+    redirect_to @auth_page
+  end
+
+  # GET /authenticate
+  def auth_page
+    @search = Search.new
   end
 
   private

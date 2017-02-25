@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
+  post '/auth_page', to: 'searches#authorize'
   resources :searches
-  root 'searches#new'
+  root 'searches#auth_page'
   get '/oauth2/callback', to: 'results#show'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
