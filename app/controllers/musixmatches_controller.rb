@@ -7,7 +7,6 @@ class MusixmatchesController < ApplicationController
 
   def search
     @result = Musixmatch.search_get(musix_params)
-    # Musixmatch.count_results(@result)
     render json: @result
   end
 

@@ -28,14 +28,14 @@ class Musixmatch < ApplicationRecord
     num_results = results['message']['body']['track_list'].count.to_i
     total_results = results['message']['header']['available']
     if num_results < total_results
-      true
-    else
-      false
-      #   num_pages = (total_results.to_f/num_results).ceil
-      # (2..num_pages).each do |n|
-      #     remaining_results = Musixmatch.data_pull("#{uri}&page=#{n}")
-      #     print_names(remaining_results)
-      # end
+        num_pages = (total_results.to_f/num_results).ceil
+      (2..num_pages).each do |n|
+          remaining_results = Musixmatch.data_pull("#{uri}&page=#{n}")
+          remaining_results['message']['body']['track_list'].each do |track|
+            results['message']['body']['track_list'].push(track)
+          end
+      end
     end
+    results
   end
 end
