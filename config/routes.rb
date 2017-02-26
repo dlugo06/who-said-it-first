@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'welcome#landing'
   resources :searches
-  post '/', to: 'genius#authorize'
+  post '/genius_auth', to: 'genius#authorize'
   get 'genius_auth', to: 'genius#auth_page'
   get '/oauth2/callback.json', to: 'genius#show'
 
