@@ -1,0 +1,11 @@
+<%= form_for :musix do |f| %>
+  <div class="field">
+    <%= f.label :lyrics, 'Enter Lyrics' %><br>
+    <%= f.text_field :lyrics %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Search' %>
+  </div>
+<% end %>
+<%= link_to 'Back', root_path %>

@@ -7,7 +7,6 @@ class GeniusController < ApplicationController
 
   # GET /authenticate
   def auth_page
-    # @genius = Genius.new
   end
 
   def show

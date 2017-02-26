@@ -26,7 +26,8 @@ group :development, :test do
 
   # added by dlugo06
   gem 'dotenv-rails'
-  gem 'pry'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :development do
