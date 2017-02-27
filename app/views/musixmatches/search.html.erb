@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Search Results</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Song Name</th>
+      <th>Artist</th>
+      <th>Album</th>
+      <th>Release Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @musix_results.each do |result| %>
+      <tr>
+        <td><%= result.song_name %></td>
+        <td><%= result.artist_name %></td>
+        <td><%= result.album_name %></td>
+        <td><%= result.release_date %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Search', musix_index_path %>
