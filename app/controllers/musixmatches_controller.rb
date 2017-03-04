@@ -2,13 +2,10 @@ class MusixmatchesController < ApplicationController
   def index
   end
 
-  def show
-  end
-
-  def search
-    @result = Musixmatch.search_get(musix_params)
+  def results
+    @search = Search.new(results: Musixmatch.search_get(musix_params))
     @musix_results = []
-    @result['message']['body']['track_list'].each do |track|
+    @search.results['message']['body']['track_list'].each do |track|
       track = track['track']
       @musix = Musixmatch.new
       unless track['first_release_date'].blank?
@@ -20,10 +17,19 @@ class MusixmatchesController < ApplicationController
       end
     end
 
-    @musix_results# = Musixmatch.where(id: @musix_results.map(&:id))
+    @musix_results
+  end
+
+  def search
+  end
+
+  def order_results
+    byebug
   end
 
   private
+
+
   def musix_params
     params.fetch(:musix, {})
   end

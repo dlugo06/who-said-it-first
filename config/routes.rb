@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'genius_auth', to: 'genius#auth_page'
   get '/oauth2/callback.json', to: 'genius#show'
 
-  get 'musix_index', to: 'musixmatches#index'
-  post 'musix_index', to: 'musixmatches#search'
-  get 'musix_show', to: 'musixmatches#show'
+  get 'musix_search', to: 'musixmatches#search'
+  post 'musix_search', to: 'musixmatches#results'
+  get 'musix_results', to: 'musixmatches#order_results'
 end
